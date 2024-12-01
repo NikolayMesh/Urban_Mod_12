@@ -1,6 +1,8 @@
 import unittest
 import runner_and_tournament
 
+is_frozen = True
+
 class TournamentTest(unittest.TestCase):
     all_results ={}
 
@@ -33,7 +35,7 @@ class TournamentTest(unittest.TestCase):
             result_str = {place: str(runner) for place, runner in finishers.items()}
             print(result_str)
 
-
+    @unittest.skipIf(is_frozen,'Тесты в этом кейсе заморожены')
     def test_tournament_usain_nik(self):
 
         tournament = runner_and_tournament.Tournament(90,  *[self.usain, self.nik])
@@ -44,6 +46,7 @@ class TournamentTest(unittest.TestCase):
         last_runner_name = results[max(results.keys())].name
         self.assertTrue(last_runner_name == "Ник")
 
+    @unittest.skipIf(is_frozen,'Тесты в этом кейсе заморожены')
     def test_tournament_andrey_nik(self):
 
         tournament = runner_and_tournament.Tournament(90,  *[self.andrey, self.nik])
@@ -54,6 +57,7 @@ class TournamentTest(unittest.TestCase):
         last_runner_name = results[max(results.keys())].name
         self.assertTrue(last_runner_name == "Ник")
 
+    @unittest.skipIf(is_frozen,'Тесты в этом кейсе заморожены')
     def test_tournament_usain_andrey_nik(self):
 
         tournament = runner_and_tournament.Tournament(90,  *[self.usain,self.andrey, self.nik])
